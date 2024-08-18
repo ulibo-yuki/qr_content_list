@@ -40,7 +40,8 @@ pub fn create(mut content: TwoDBoxList) -> TwoDBoxList {
         max = std::cmp::max(item.id, max);
     }
     content.id = max + 1;
-    let url = "http://localhost:8000/static/img/qr_code/";
+    let url_dev = "http://localhost:8000/static/img/qr_code/";
+    let url = "http://192.168.1.100:8000/static/img/qr_code/";
     content.qr_img_path = qr_generator::make_qr_img(format!("{}{}.png",url, content.id), content.id);
     json_data.push(content);
     let json_str = serde_json::to_string(&json_data).unwrap();
