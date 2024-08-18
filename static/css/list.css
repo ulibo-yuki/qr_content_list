@@ -39,11 +39,14 @@ a {
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: 320px;
+    height: 300px;
 }
 
 .link_main_content {
     display: flex;
+    @media (max-width: 480px) {
+        flex-wrap: wrap;
+    }
 }
 
 .link_title_info {

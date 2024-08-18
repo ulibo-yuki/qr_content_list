@@ -40,8 +40,13 @@ pub fn create(mut content: TwoDBoxList) -> TwoDBoxList {
         max = std::cmp::max(item.id, max);
     }
     content.id = max + 1;
-    let _url_dev = "http://localhost:8080/qr_list/";
-    let url = "http://192.168.1.100:8080/qr_list/";
+    let url = if cfg!(debug_assertions) {
+        "http://localhost:8080/qr_list/"
+    } else {
+        "http://192.168.1.100:8080/qr_list/"
+    };
+    // let _url_dev = "http://localhost:8080/qr_list/";
+    // let url = "http://192.168.1.100:8080/qr_list/";
     content.qr_img_path = qr_generator::make_qr_img(format!("{}{}",url, content.id), content.id);
     json_data.push(content);
     let json_str = serde_json::to_string(&json_data).unwrap();
@@ -63,4 +68,12 @@ pub fn get(id: i32) -> TwoDBoxList {
         content = jsno_data[index].clone();
     }
     content
+}
+
+pub fn remove(id: i32) {
+    let file = fs::read_to_string(DATA_FILENAME).unwrap();
+    let mut json_data: Vec<TwoDBoxList> = serde_json::from_str(&file).unwrap();
+    json_data.retain(|item| item.id != id);
+    let json_str = serde_json::to_string(&json_data).unwrap();
+    let _ = fs::write(DATA_FILENAME, json_str);
 }

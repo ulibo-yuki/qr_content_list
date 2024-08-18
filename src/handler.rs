@@ -78,7 +78,7 @@ pub async fn show(info: web::Path<i32>) -> impl Responder {
     body_str += include_str!("../static/header.html");
     // 個別表示
     if post.id != 0 {
-        body_str += &format!("<div class=\"pare\"><p class=\"title\">{}</p><div class=\"content_see\"><link rel=\"stylesheet\" href=\"../static/css/show.css\"><div><ul>", post.title);
+        body_str += &format!("<div class=\"pare\"><p class=\"content_title\">{}</p><div class=\"content_see\"><link rel=\"stylesheet\" href=\"../static/css/show.css\"><div><ul>", post.title);
         for item in post.content_list {
             body_str += &format!("<li>{}</li>", item);
         }
@@ -142,4 +142,12 @@ pub async fn not_found() -> impl Responder {
     body_str += include_str!("../static/not_found.html");
     body_str += include_str!("../static/footer.html");
     HttpResponse::NotFound().body(body_str)
+}
+
+#[get("/qr_list/{id}/delete")]
+pub async fn destroy(info: web::Path<i32>) -> impl Responder {
+    info!("called destroy");
+    let info = info.into_inner();
+    data::remove(info);
+    web::Redirect::to("/qr_list").see_other()
 }
