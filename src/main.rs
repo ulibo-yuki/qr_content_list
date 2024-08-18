@@ -19,7 +19,7 @@ async fn main() -> Result<()> {
             .default_service(web::to(handler::not_found))
             .wrap(Logger::default())
     })
-    .bind("127.0.0.1:8000")?
+    .bind("192.168.1.100:8000")?
     .run()
     .await
 }
