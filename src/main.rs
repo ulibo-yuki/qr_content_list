@@ -32,7 +32,13 @@ async fn main() -> Result<()> {
 }
 
 fn make_data_json() {
-    let mut _file = OpenOptions::new().create(true).truncate(false).read(true).write(true).open("data.json").unwrap();
+    let mut _file = OpenOptions::new()
+        .create(true)
+        .truncate(false)
+        .read(true)
+        .write(true)
+        .open("data.json")
+        .unwrap();
     // let reader = BufReader::new(&file);
     // if let Some(Ok(line)) = reader.lines().next() {
     //     if line.trim().is_empty() {

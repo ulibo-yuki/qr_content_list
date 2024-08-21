@@ -1,6 +1,6 @@
 use core::fmt;
+use serde::{Deserialize, Serialize};
 use std::{fs, path::PathBuf};
-use serde::{Serialize, Deserialize};
 
 use super::super::qr_generator;
 
@@ -47,7 +47,7 @@ pub fn create(mut content: TwoDBoxList) -> TwoDBoxList {
     };
     // let _url_dev = "http://localhost:8080/qr_list/";
     // let url = "http://192.168.1.100:8080/qr_list/";
-    content.qr_img_path = qr_generator::make_qr_img(format!("{}{}",url, content.id), content.id);
+    content.qr_img_path = qr_generator::make_qr_img(format!("{}{}", url, content.id), content.id);
     json_data.push(content);
     let json_str = serde_json::to_string(&json_data).unwrap();
     let _ = fs::write(DATA_FILENAME, json_str);

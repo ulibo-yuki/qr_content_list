@@ -1,8 +1,8 @@
-use std::path::PathBuf;
 use actix_web::{get, post, web, HttpResponse, Responder};
 use chrono::Local;
 use log::info;
 use serde::Deserialize;
+use std::path::PathBuf;
 
 //style.css path is "<link rel=\"stylesheet\" href=\"../static/css/style.css\">"
 
@@ -59,7 +59,7 @@ pub async fn qr_list() -> impl Responder {
             body_str += &format!("<li>{}</li>", list);
         }
         body_str += &format!("</ul></nav></div><img class=\"qr_img\" src=\"{}\" alt=\"qr code img\"></div><p class=\"datetime\">last edited by: {}</p></div></a></div>", item.qr_img_path.to_string_lossy().into_owned(), item.last_edit_time);
-        }
+    }
     body_str += "</div>";
     body_str += include_str!("../static/footer.html");
 
@@ -90,7 +90,9 @@ pub async fn show(info: web::Path<i32>) -> impl Responder {
     }
     body_str += "<a href=\"/qr_list\">一覧へ</a></div>";
     body_str += include_str!("../static/footer.html");
-    HttpResponse::Ok().content_type("text.html; charset=utf-8").body(body_str)
+    HttpResponse::Ok()
+        .content_type("text.html; charset=utf-8")
+        .body(body_str)
 }
 
 #[get("/qr_list/new")]
@@ -107,7 +109,9 @@ pub async fn new() -> impl Responder {
     body_str = body_str.replace("{{content}}", "");
     body_str = body_str.replace("{{button}}", "登録");
 
-    HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body_str)
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(body_str)
 }
 
 #[derive(Deserialize, Debug)]
