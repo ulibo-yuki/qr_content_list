@@ -29,7 +29,7 @@ a.new_btn:hover {
 }
 .qr_content {
     display: flex;
-    border: 3px solid #333333;
+    border: 3px solid #27acd9;
     border-radius: 30px;
     width: 500px;
     height: 360px;
