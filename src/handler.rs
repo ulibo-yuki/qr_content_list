@@ -37,29 +37,23 @@ async fn home() -> impl Responder {
 pub async fn qr_list() -> impl Responder {
     let qrs_list = data::get_all();
     let mut body_str = "".to_string();
-
     body_str += include_str!("../static/header.html");
-    body_str += "<h1>QR 一覧</h1>";
-    body_str += "<link rel=\"stylesheet\" href=\"../static/css/qr_list.css\">";
-    body_str += "<div id=\"make\"><a href=\"/qr_list/new\">作成</a></div>";
-    body_str += "<div class=\"qr_content_list\">";
+    body_str += "<h1>QR 一覧</h1>
+                <link rel=\"stylesheet\" href=\"../static/css/style.css\">
+                <link rel=\"stylesheet\" href=\"../static/css/qr_list.css\">
+                <a href=\"/qr_list/new\" class=\"new_btn\">作成</a>
+                <div class=\"qr_content_list\">";
     for item in &qrs_list {
-        body_str += &format!("<div class=\"qr_link_content\">
-                                <link rel=\"stylesheet\" href=\"../static/css/list.css\">
-                                <link rel=\"stylesheet\" href=\"../static/css/style.css\">
-                                <a href=\"/qr_list/{}\" target=\"_blank\" rel=\"noopener noreferrer\">
-                                <div class=\"link_content\">
-                                <div class=\"link_main_content\">
-                                <div class=\"link_title_info\">
-                                    <p class=\"content\">{}</p>
-                                    <nav class=\"menu\">
-                                        <ul>",
-                                        item.id, item.title);
+        body_str += &format!("<div class=\"qr_content\"><a href=\"qr_list/{id}\">
+                            <p class=\"content_title\">{title}</p>
+                            <div class=\"content_info\">
+                            <nav class=\"content_list\">
+                            <ul>", id=item.id, title=item.title);
         for list in &item.content_list {
             body_str += &format!("<li>{}</li>", list);
         }
-        body_str += &format!("</ul></nav></div><img class=\"qr_img\" src=\"{}\" alt=\"qr code img\"></div><p class=\"datetime\">last edited by: {}</p></div></a></div>", item.qr_img_path.to_string_lossy().into_owned(), item.last_edit_time);
-    }
+        body_str += &format!("</ul></nav><img src=\"{img_path}\" alt=\"qr image path\"></div><p class=\"edit_time\">編集日: {edit_time}</p></a></div>", img_path=item.qr_img_path.to_string_lossy().into_owned(), edit_time=item.last_edit_time);
+    };
     body_str += "</div>";
     body_str += include_str!("../static/footer.html");
 
@@ -78,17 +72,23 @@ pub async fn show(info: web::Path<i32>) -> impl Responder {
     body_str += include_str!("../static/header.html");
     // 個別表示
     if post.id != 0 {
-        body_str += &format!("<div class=\"pare\"><p class=\"content_title\">{}</p><div class=\"content_see\"><link rel=\"stylesheet\" href=\"../static/css/show.css\"><div><ul>", post.title);
+        body_str += &format!(
+        "<div class=\"pare\">
+            <p class=\"content_title\">{}</p>
+            <div class=\"content\">
+                <link rel=\"stylesheet\" href=\"../static/css/show.css\">
+                <div class=\"content_list\">
+                    <ul>", post.title);
         for item in post.content_list {
             body_str += &format!("<li>{}</li>", item);
         }
         body_str += &format!("</ul></div><img src=\"{}\" alt=\"qr png\"></div><p class=\"datetime\">last edited by: {}", post.qr_img_path.to_string_lossy().into_owned().trim(), post.last_edit_time);
-        body_str += &format!("<br><a href=\"/qr_list/{}/edit\">編集</a>", info);
-        body_str += &format!("<a href=\"/qr_list/{}/delete\">削除</a>", info);
+        body_str += &format!("<div class=\"edit_remove_btns\"><a href=\"/qr_list/{}/edit\" class=\"three_btns\">編集</a>", info);
+        body_str += &format!("<a href=\"/qr_list/{}/delete\" class=\"three_btns\">削除</a>", info);
     } else {
-        body_str += "見つかりません";
+        body_str += "見つかりません。";
     }
-    body_str += "<a href=\"/qr_list\">一覧へ</a></div>";
+    body_str += "<a href=\"/qr_list\" class=\"three_btns\">一覧へ</a></div>";
     body_str += include_str!("../static/footer.html");
     HttpResponse::Ok()
         .content_type("text.html; charset=utf-8")
@@ -137,7 +137,7 @@ pub async fn create(params: web::Form<CreateFrom>) -> impl Responder {
 }
 
 fn string_to_vec(str: String) -> Vec<String> {
-    str.split(',').map(|s| s.to_string()).collect()
+    str.trim_end_matches(',').split(',').map(|s| s.to_string()).collect()
 }
 
 pub async fn not_found() -> impl Responder {
