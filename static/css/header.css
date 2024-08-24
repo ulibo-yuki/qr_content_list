@@ -44,3 +44,13 @@ a.new_btn_header:hover {
     color: #27acd9;
     background: #fff;
 }
+
+a.doc {
+    background-color: RoyalBlue;
+    border: RoyalBlue;
+}
+a.doc:hover {
+    color: royalblue;
+    background-color: #fff;
+    border: 2px solid royalblue;
+}
