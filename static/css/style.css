@@ -1,0 +1,19 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;
+    margin: 0;
+    height: 100%;
+    background-color: #fdfdfd;
+}
+
+.content {
+    background-color: #fdfdfd;
+}
+
+#footer {
+    position: sticky;
+    top: 100vh;
+}

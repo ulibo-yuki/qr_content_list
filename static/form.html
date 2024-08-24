@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/form.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/qr_list/{{action}}" method="POST">
+        <div><label for="title">タイトル</label><br />
+            <input type="text" id="title" name="title" size="20" value="{{title}}" required>
+        </div>
+        <div><label for="content">内容物</label><br/>
+            <div id="itemContainer"></div>
+            <button type="button" onclick="addItem()">項目の追加</button>
+            <script src="../static/script/form.js"></script>
+            <textarea id="content" name="content">{{content}}</textarea>
+        </div>
+        <div>
+            <button type="submit">{{button}}</button> <a href="/qr_list">一覧へ</a>
+        </div>
+        <input type="hidden" name="last_edit_time" id="last_edit_time" value="{{last_edit_time}}">
+    </form>
+</body>
+</html>

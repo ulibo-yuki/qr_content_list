@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="footer"></div>
+    <script>
+        document.getElementById('header').innerHTML='<object type="text/html" data="header.html"></object>';
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+        fetch("footer.html")
+            .then(respone => respone.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>
