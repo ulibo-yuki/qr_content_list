@@ -1,3 +1,138 @@
 #content {
     display: none;
 }
+
+form {
+    width: 80%;
+    margin: 10% auto;
+    margin-top: 20px;
+    margin-left: 40px;
+    min-width: 9rem;
+    label {
+        font-size: 24px;
+    }
+}
+
+.form_title {
+    font-size: 24px;
+    input {
+        width: 300px;
+        height: 23px;
+        font-size: 20px;
+        border: 1px solid #e0e0e0;
+        background-color: #e0e0e0;
+        outline: none;
+        border-radius: 5px;
+    }
+}
+
+.new_btn {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    outline: none;
+    font-size: 30px;
+    background-color: #27acd9;
+    border: 1px solid #27acd9;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 50%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    padding: 0;
+}
+.new_btn:hover {
+    background-color: #ffffff;
+    svg {
+        fill: #27acd9;
+    }
+    transform: rotate(45deg);
+}
+.new_btn:active {
+    background-color: #27acd9;
+    transform: rotate(45deg);
+}
+
+.input_content {
+    svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+        margin: auto;
+        fill: #fff;
+        stroke: #fff;
+    }
+}
+
+.form_block {
+    margin-bottom: 30px;
+}
+
+.remove_btn {
+    margin-left: 10px;
+    background-color: #27acd9;
+    border: 1px solid #27acd9;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    svg {
+        fill: #fff;
+    }
+}
+.remove_btn:hover {
+    background-color: #fff;
+    svg {
+        fill: #27acd9;
+        stroke: #27acd9;
+    }
+}
+.remove_btn:active {
+    background-color: #27acd9;
+}
+
+.ctrl_btns {
+    display: flex;
+}
+.ctrl_btn {
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #27acd9;
+    border-radius: 10px;
+    background-color: #27acd9;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 20px;
+    }
+}
+.ctrl_btn:hover {
+    background-color: #fff;
+    a {
+        color: #27acd9;
+    }
+}
+
+
+.ctrl_btns button{
+    width: 100px;
+    height: 30px;
+    background-color: #27acd9;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #27acd9;
+    border-radius: 10px;
+}
+.ctrl_btns button:hover {
+    background-color: #fff;
+    color: #27acd9;
+}

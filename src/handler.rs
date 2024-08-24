@@ -44,7 +44,7 @@ pub async fn qr_list() -> impl Responder {
                 <a href=\"/qr_list/new\" class=\"new_btn\">作成</a>
                 <div class=\"qr_content_list\">";
     for item in &qrs_list {
-        body_str += &format!("<div class=\"qr_content\"><a href=\"qe_list/{id}\">
+        body_str += &format!("<div class=\"qr_content\"><a href=\"qr_list/{id}\">
                             <p class=\"content_title\">{title}</p>
                             <div class=\"content_info\">
                             <nav class=\"content_list\">
@@ -83,12 +83,12 @@ pub async fn show(info: web::Path<i32>) -> impl Responder {
             body_str += &format!("<li>{}</li>", item);
         }
         body_str += &format!("</ul></div><img src=\"{}\" alt=\"qr png\"></div><p class=\"datetime\">last edited by: {}", post.qr_img_path.to_string_lossy().into_owned().trim(), post.last_edit_time);
-        body_str += &format!("<br><a href=\"/qr_list/{}/edit\">編集</a>", info);
-        body_str += &format!("<a href=\"/qr_list/{}/delete\">削除</a>", info);
+        body_str += &format!("<div class=\"edit_remove_btns\"><a href=\"/qr_list/{}/edit\" class=\"three_btns\">編集</a>", info);
+        body_str += &format!("<a href=\"/qr_list/{}/delete\" class=\"three_btns\">削除</a>", info);
     } else {
-        body_str += "見つかりません";
+        body_str += "見つかりません。";
     }
-    body_str += "<a href=\"/qr_list\">一覧へ</a></div>";
+    body_str += "<a href=\"/qr_list\" class=\"three_btns\">一覧へ</a></div>";
     body_str += include_str!("../static/footer.html");
     HttpResponse::Ok()
         .content_type("text.html; charset=utf-8")

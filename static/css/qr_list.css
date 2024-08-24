@@ -8,7 +8,7 @@ a.new_btn {
     text-decoration: none;
     width: 120px;
     margin: auto;
-    margin-left: 100px;
+    margin-left: 40px;
     padding: 1rem 4rem;
     font-weight: bold;
     border: 2px solid #27acd9;
@@ -79,6 +79,7 @@ a.new_btn:hover {
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 20px;
+        line-height: 1.1;
     }
 }
 .edit_time {
