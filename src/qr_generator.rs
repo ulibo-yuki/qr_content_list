@@ -1,7 +1,7 @@
 use image::Luma;
 use log::info;
-use std::path::PathBuf;
 use qrcode::QrCode;
+use std::path::PathBuf;
 
 pub fn make_qr_img(path: String, id: i32) -> PathBuf {
     let code = QrCode::new(path.as_bytes()).unwrap();

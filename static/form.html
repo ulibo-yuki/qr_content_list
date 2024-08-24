@@ -8,17 +8,22 @@
 </head>
 <body>
     <form action="/qr_list/{{action}}" method="POST">
-        <div><label for="title">タイトル</label><br />
-            <input type="text" id="title" name="title" size="20" value="{{title}}" required>
+        <div class="form_title form_block"><label for="title">タイトル</label><br />
+            <input type="text" id="title" name="title" placeholder="Title" size="20" value="{{title}}" required>
         </div>
-        <div><label for="content">内容物</label><br/>
+        <div class="input_content form_block"><label for="content">内容物</label><br/>
             <div id="itemContainer"></div>
-            <button type="button" onclick="addItem()">項目の追加</button>
+            <button type="button" onclick="addItem()" class="new_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg></button>
             <script src="../static/script/form.js"></script>
             <textarea id="content" name="content">{{content}}</textarea>
         </div>
-        <div>
-            <button type="submit">{{button}}</button> <a href="/qr_list">一覧へ</a>
+        <div class="ctrl_btns">
+            <div class="ctrl_btn">
+                <button type="submit">{{button}}</button>
+            </div>
+            <div class="ctrl_btn">
+                <a href="/qr_list">一覧へ</a>
+            </div>
         </div>
         <input type="hidden" name="last_edit_time" id="last_edit_time" value="{{last_edit_time}}">
     </form>

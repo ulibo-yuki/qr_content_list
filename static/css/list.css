@@ -32,6 +32,7 @@ a {
     }
     li {
         list-style: none;
+        line-height: 0.8;
     }
 }
 

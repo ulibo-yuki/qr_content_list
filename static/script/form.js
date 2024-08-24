@@ -4,6 +4,7 @@ function addItem() {
     const container = document.getElementById('itemContainer');
     const div = document.createElement('div');
     div.className = 'item-container';
+    div.className = 'form_title';
     div.id = `item-${itemIndex}`;
     
     const input = document.createElement('input');
@@ -18,10 +19,14 @@ function addItem() {
             concat();
         }
     });
-    
+// <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>
+    // const svg = document.createAttributeNS('http://www.w3.org/2000/svg', 'svg');
+    // svg.setAttribute()
+
     const button = document.createElement('button');
     button.type = 'button';
-    button.innerText = '削除';
+    button.className = 'remove_btn';
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>';
     button.onclick = function() {
         removeItem(div.id);
     };
