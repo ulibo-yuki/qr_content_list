@@ -1,3 +1,4 @@
+use actix_files::NamedFile;
 use actix_web::{get, post, web, HttpResponse, Responder};
 use chrono::Local;
 use log::info;
@@ -7,6 +8,11 @@ use std::path::PathBuf;
 //style.css path is "<link rel=\"stylesheet\" href=\"../static/css/style.css\">"
 
 mod data;
+
+#[get("/favicon")]
+async fn favicon() -> Result<impl Responder, std::io::Error> {
+    NamedFile::open("/static/img/favicon.ico")
+}
 
 #[get("/")]
 async fn home() -> impl Responder {

@@ -2,7 +2,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
     .content_title {
         font-size: 50px;
         margin-bottom: 10px;
@@ -16,6 +15,7 @@
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     img {
         margin-left: 10px;
