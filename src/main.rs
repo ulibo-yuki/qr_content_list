@@ -16,6 +16,7 @@ async fn main() -> Result<()> {
     env_logger::init_from_env(Env::default().default_filter_or("info"));
     HttpServer::new(|| {
         App::new()
+            .service(handler::favicon)
             .service(handler::home)
             .service(handler::qr_list)
             .service(handler::new)
@@ -32,21 +33,11 @@ async fn main() -> Result<()> {
 }
 
 fn make_data_json() {
-    let mut _file = OpenOptions::new()
+    let _ = OpenOptions::new()
         .create(true)
         .truncate(false)
         .read(true)
         .write(true)
         .open("data.json")
         .unwrap();
-    // let reader = BufReader::new(&file);
-    // if let Some(Ok(line)) = reader.lines().next() {
-    //     if line.trim().is_empty() {
-    //         // let open = OpenOptions::new().append(true).open("data.json");
-    //         // let mut file1 = open.unwrap();
-    //         write!(file, "[]");
-    //     }
-    // }
-    // let mut buffer = String::new();
-    // let file_str = file.read_to_string(&mut buffer).unwrap();
 }

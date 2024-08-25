@@ -1,11 +1,13 @@
 .header {
     display: flex;
     /* position: fixed; */
+    flex-wrap: wrap;
 }
 
 .title {
     margin-left: 40px;
     margin-right: auto;
+    height: 100px;
     a {
         text-decoration: none;
         color: #333333;
@@ -23,6 +25,9 @@
 .btns {
     margin-top: 30px;
     margin-right: 30px;
+    margin-left: 40px;
+    display: flex;
+    column-gap: 30px;
 }
 
 a.new_btn_header {
@@ -32,6 +37,7 @@ a.new_btn_header {
     text-decoration: none;
     width: 50px;
     margin: auto;
+    margin-top: 30px;
     padding: 1rem 4rem;
     font-weight: bold;
     border: 2px solid #27acd9;
