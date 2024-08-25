@@ -41,11 +41,15 @@ a.new_btn:hover {
 }
 .content_info {
     display: flex;
+    flex-wrap: wrap;
     height: 270px;
+    justify-content: center;
     nav {
         margin-left: 30px;
         margin-right: 30px;
         width: 150px;
+        text-align: center;
+        align-items: center;
         nav {
             height: 200px;
         }
@@ -85,4 +89,32 @@ a.new_btn:hover {
 .edit_time {
     text-align: center;
     margin-top: 0;
+}
+
+@media screen and (max-width: 760px) {
+    .qr_content {
+        height: initial;
+    }
+    .content_info {
+        height: initial;
+        /* max-height: 200px; */
+        img {
+            display: block;
+            height: 200px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 0;
+        }
+        .content_list {
+            max-height: 200px;
+        }
+        nav.content_list {
+            height: initial;
+            max-height: 200px;
+        }
+        .edit_time {
+            display: block;
+            margin-top: 40px;
+        }
+    }
 }
