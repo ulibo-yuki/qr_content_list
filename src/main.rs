@@ -19,6 +19,7 @@ async fn main() -> Result<()> {
             .service(handler::favicon)
             .service(handler::home)
             .service(handler::qr_list)
+            .service(handler::qr_uses)
             .service(handler::new)
             .service(handler::create)
             .service(handler::destroy)

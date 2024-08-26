@@ -161,3 +161,13 @@ pub async fn destroy(info: web::Path<i32>) -> impl Responder {
     data::remove(info);
     web::Redirect::to("/qr_list").see_other()
 }
+
+#[get("/qr_list/uses")]
+pub async fn qr_uses() -> impl Responder {
+    let mut body_str = "".to_string();
+    body_str += include_str!("../static/header.html");
+    body_str += include_str!("../static/qr_list_uses.html");
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(body_str)
+}
