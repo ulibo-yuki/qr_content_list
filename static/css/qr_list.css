@@ -16,6 +16,8 @@ a.new_btn {
     color: #fff;
     border-radius: 100vh;
     transition: 0.5s;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 a.new_btn:hover {
     color: #27acd9;

@@ -23,11 +23,13 @@
 }
 
 .btns {
-    margin-top: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-right: 30px;
     margin-left: 40px;
     display: flex;
-    column-gap: 30px;
+    flex-wrap: wrap;
+    column-gap: 10px;
 }
 
 a.new_btn_header {
@@ -38,6 +40,7 @@ a.new_btn_header {
     width: 50px;
     margin: auto;
     margin-top: 30px;
+    margin-bottom: auto;
     padding: 1rem 4rem;
     font-weight: bold;
     border: 2px solid #27acd9;
@@ -45,6 +48,8 @@ a.new_btn_header {
     color: #fff;
     border-radius: 100vh;
     transition: 0.5s;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 a.new_btn_header:hover {
     color: #27acd9;

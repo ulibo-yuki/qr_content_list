@@ -1,16 +1,20 @@
-body {
+.page {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.title {
+.title_uses_page {
     margin-top: 10px;
+    margin-left: 0;
 }
 
 img {
+    display: block;
     width: 80%;
     border: 1px solid #333333;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .none_index {
@@ -23,5 +27,12 @@ img {
     a {
         text-decoration: none;
         color: #333333;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    body {
+        width: 100%;
+        margin-left: 10px;
     }
 }
